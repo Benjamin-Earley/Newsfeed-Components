@@ -114,27 +114,47 @@ You will want your component to look like the template below:
     component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as 
-    the others. Refresh the page to see the new artible
+    the others. Refresh the page to see the new article
 
 */
 let articles = document.querySelector('.articles')
 
-function articleCreator() {
+function articleCreator(aTitle, aDate, aPara1, aPara2, aPara3) {
     let article = document.createElement('div')
-    article.classList.add('article')
+        article.classList.add('article')
+        
+        let title = document.createElement('h2')
+            title.textContent = aTitle
+            article.prepend(title)
+        let date = document.createElement('p')
+            date.classList.add('date')
+            date.textContent = aDate
+            article.appendChild(date)
+        let para1 = document.createElement('p')
+            para1.textContent = aPara1
+            article.appendChild(para1)
+        let para2 = document.createElement('p')
+            para2.textContent = aPara2
+            article.appendChild(para2)
+        let para3 = document.createElement('p')
+            para3.textContent = aPara3
+            article.appendChild(para3)
 
-    console.log(artilcle)
+        let button = document.createElement('span')
+            button.classList.add('expandButton')
+            article.appendChild(button)
+            button.addEventListener('toggle', () => {
+              article.classList.add('article-open')
+              console.log(`${aTitle} is being read.`)
+            })
+
     return article
 }
-articles.appendChild(article)
 
-let title = document.createElement('h2')
+const articleComponent = data.map(item => {
+  return articleCreator(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph)
+})
 
-function hTwoCreator(titleText) {
-    let hTwo = document.querySelector('h2')
-    hTwo.textContent = titleText
-
-    console.log(hTwo)
-    return hTwo
-}
-article.prepend(hTwo)
+articleComponent.forEach(newArticle => {
+  articles.appendChild(newArticle)
+})
