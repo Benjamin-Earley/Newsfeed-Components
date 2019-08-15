@@ -85,6 +85,18 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: `Blahdee blubee blah blah`,
+    date: `Sometime in the near future`,
+    firstParagraph: `Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.
+          Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.`,
+    
+    secondParagraph: `Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.
+          Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.`,
+
+    thirdParagraph: `Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.
+          Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep. Bleep, bleep, bleep, bleep.`
   }
 ];
 
@@ -142,9 +154,10 @@ function articleCreator(aTitle, aDate, aPara1, aPara2, aPara3) {
 
         let button = document.createElement('span')
             button.classList.add('expandButton')
+            button.textContent = 'Expand'
             article.appendChild(button)
-            button.addEventListener('toggle', () => {
-              article.classList.add('article-open')
+            button.addEventListener('click', () => {
+              article.classList.toggle('article-open')
               console.log(`${aTitle} is being read.`)
             })
 
